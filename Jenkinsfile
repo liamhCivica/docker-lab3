@@ -4,7 +4,7 @@ pipeline {
         stage('Clean up'){
             steps {
                 sh '''
-                $CONTAINERS=docker ps -a -q
+                $CONTAINERS=\$(docker ps -a -q)
                 if [ -n "$CONTAINERS" ]; then
                     docker stop \$CONTAINERS
                     docker rm \$CONTAINERS
