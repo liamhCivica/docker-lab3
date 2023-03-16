@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh '''
                 $CONTAINERS=\$(docker ps -a -q)
+                echo $CONTAINERS
                 if [ -n "$CONTAINERS" ]; then
                     docker stop \$CONTAINERS
                     docker rm \$CONTAINERS
