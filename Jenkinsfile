@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                sh "docker run -p 5500:5500 --name app app"
+                sh "docker run -d -p 5500:5500 --name app app"
             }
         }
     }
