@@ -3,20 +3,17 @@ pipeline {
     stages {
         stage('Test'){
             steps {
-                sh "ls"
+                sh "./test.sh"
             }
         }
         stage('Build'){
             steps {
-                sh "echo build"
-                sh "touch app.py"
+                sh "./build.sh"
             }
         }
         stage('Deploy'){
             steps {
-                sh "echo deploy"
-                sh "mkdir deploy"
-                sh "mv app.py deploy/"
+                sh "./deploy.sh"
             }
         }
     }
