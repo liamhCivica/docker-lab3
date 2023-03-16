@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Test'){
+            steps {
+                sh "ls"
+            }
+        }
+        stage('Build'){
+            steps {
+                sh "echo build"
+                sh "touch app.py"
+            }
+        }
+        stage('Deploy'){
+            steps {
+                sh "echo deploy"
+                sh "mkdir deploy"
+                sh "mv app.py deploy/"
+            }
+        }
+    }
+}
