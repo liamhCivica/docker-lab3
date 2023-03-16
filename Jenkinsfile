@@ -1,9 +1,15 @@
 pipeline {
     agent any
     stages {
+        stage('Clean up'){
+            steps {
+                sh "docker stop $(docker ps -a -q)"
+                sh "docker rm $(docker ps -a -q)"
+            }
+        }
         stage('Build'){
             steps {
-                sh "docker build -t app dockerfileexercise/Task1"
+                sh "docker build -t app ."
             }
         }
         stage('Deploy'){
