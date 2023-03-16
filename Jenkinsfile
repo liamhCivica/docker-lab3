@@ -3,8 +3,13 @@ pipeline {
     stages {
         stage('Clean up'){
             steps {
-                sh "docker stop \$(docker ps -a -q)"
-                sh "docker rm \$(docker ps -a -q)"
+                sh '''
+                $CONTAINERS=docker ps -a -q
+                if [ -n "$CONTAINERS" ]; then
+                    docker stop \$CONTAINERS
+                    docker rm \$CONTAINERS
+                fi
+                '''
             }
         }
         stage('Build'){
